@@ -4,19 +4,15 @@
   box-sizing: border-box;
 }
 
-
-
 a {
   text-decoration: none;
 }
 
 body {
- 
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Roboto', sans-serif;
   background: #076585;
   background: -webkit-linear-gradient(to right, #fff, #076585);
-  background: linear-gradient(to right, #fff, #076585); 
-  
+  background: linear-gradient(to right, #fff, #076585);
 }
 
 .container {
@@ -29,7 +25,7 @@ img {
   width: 100px;
   height: 100px;
   padding: 4px;
-border: #1c81a3 solid 4px;
+  border: #1c81a3 solid 4px;
   border-radius: 50%;
 }
 
@@ -51,8 +47,8 @@ ul li a {
   align-items: center;
   justify-content: center;
   background: #076585;
-  background: -webkit-linear-gradient(to right,#076585, #fff);
-  background: linear-gradient(to right,#076585, #fff); 
+  background: -webkit-linear-gradient(to right, #076585, #fff);
+  background: linear-gradient(to right, #076585, #fff);
   color: white;
   text-transform: uppercase;
   font-size: 14px;
@@ -65,8 +61,7 @@ ul li a {
 ul li a:hover {
   background: #076585;
   background: -webkit-linear-gradient(to right, #fff, #076585);
-  background: linear-gradient(to right, #fff, #076585); 
- 
+  background: linear-gradient(to right, #fff, #076585);
 }
 
 p {
@@ -77,7 +72,57 @@ p {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
+}
+
+.cont {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  visibility: hidden;
+  display: none;
+}
+
+.check {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 25px;
+  background: #076585;
+  background: -webkit-linear-gradient(to right, rgb(176, 204, 236), #076585);
+  background: linear-gradient(to right, rgb(178, 201, 235), #076585);
+  cursor: pointer;
+  border-radius: 20px;
+  transition: ease-in 0.4s;
+  overflow: hidden;
+}
+
+input[type='checkbox']:checked~.check {
+  background: rgb(255, 250, 250);
+  box-shadow: 0 0 0 1500px rgb(0, 0, 0);
+  z-index: -1;
+  filter: contrast(96%);
+}
+
+.check:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: 0.5s;
+  transform: translateX(14px);
+}
+
+input[type='checkbox']:checked~.check:after {
+  transform: translateX(0px);
+  background: #000000;
 }
 
 footer {
@@ -94,60 +139,70 @@ footer a {
   -webkit-text-fill-color: transparent;
 }
 
-li .whatsapp, .facebook, .github, .instagram {
-
+li .whatsapp,
+.facebook,
+.github,
+.instagram {
   max-height: 30px;
   max-width: 30px;
-  border:none;
+  border: none;
   border-radius: 0%;
 }
 
 li {
-  animation: listLeft 0.7s backwards;
+  animation: listLeft 0.5s backwards;
 }
-
-.image {
-  animation: fromTop 0.5s 0.3s backwards;
-}
-
 
 li:nth-child(1) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 
 li:nth-child(2) {
-  animation-delay: 0.6s;
+  animation-delay: 0.5s;
 }
 
 li:nth-child(3) {
-  animation-delay: 1.0s;
+  animation-delay: 0.9s;
 }
+
 li:nth-child(4) {
-  animation-delay: 1.4s;
+  animation-delay: 1.3s;
 }
 
+/* ===========ANIMATION========== */
+.puffIn {
+  -webkit-animation-name: puffIn;
+  animation-name: puffIn;
+}
 
-@keyframes listLeft {
-  from {
+@-webkit-keyframes puffIn {
+  0% {
     opacity: 0;
-    transform: translatex(-30px);
+    transform-origin: 50% 50%;
+    transform: scale(2, 2);
+    filter: blur(2px);
   }
 
-  to {
+  100% {
     opacity: 1;
-    transform: translateZ(0);
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+    filter: blur(0px);
   }
 }
 
-
-@keyframes fromTop {
-  from {
+@keyframes puffIn {
+  0% {
     opacity: 0;
-    transform: translateY(-30px);
+    transform-origin: 50% 50%;
+    transform: scale(2, 2);
+    filter: blur(2px);
   }
 
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+    filter: blur(0px);
   }
 }
